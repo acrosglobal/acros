@@ -50,39 +50,45 @@ export function Navigation() {
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
         isScrolled 
-          ? 'bg-white/90 backdrop-blur-sm shadow-sm py-3' 
-          : 'bg-transparent py-4'
+          ? 'bg-white/95 backdrop-blur-md shadow-md py-3' 
+          : 'bg-transparent py-5'
       )}
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
-        <a href="#home" className="flex items-center gap-2">
-          <img 
-            src="/lovable-uploads/7ad5d502-1a33-406c-8a5f-7459bc65b916.png" 
-            alt="Acros Global Logo" 
-            className="h-10 w-auto transition-transform duration-300 hover:scale-105" 
-          />
-          <span className="font-semibold text-xl text-acros-secondary">ACROS</span>
+        <a href="#home" className="flex items-center gap-2 group">
+          <div className="relative overflow-hidden rounded-lg p-1.5 transition-all duration-300 group-hover:bg-acros-primary/50">
+            <img 
+              src="/lovable-uploads/7ad5d502-1a33-406c-8a5f-7459bc65b916.png" 
+              alt="Acros Global Logo" 
+              className="h-10 w-auto transition-transform duration-300 group-hover:scale-110" 
+            />
+          </div>
+          <span className="font-display font-bold text-xl text-acros-secondary tracking-wide group-hover:text-acros-accent transition-colors duration-300">ACROS</span>
         </a>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-2">
-          {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className={cn(
-                'nav-link',
-                activeSection === item.href.replace('#', '') ? 'active' : ''
-              )}
-            >
-              {item.label}
-            </a>
-          ))}
+        <nav className="hidden md:flex items-center space-x-1">
+          <div className="bg-acros-primary/70 backdrop-blur-sm rounded-lg p-1.5 shadow-sm border border-acros-secondary/10">
+            {navItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                className={cn(
+                  'px-4 py-2 rounded-md font-medium transition-all duration-300',
+                  activeSection === item.href.replace('#', '') 
+                    ? 'bg-acros-secondary text-white shadow-sm' 
+                    : 'text-acros-secondary hover:bg-acros-secondary/10'
+                )}
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
         </nav>
 
         {/* Mobile Navigation Toggle */}
         <button 
-          className="md:hidden text-acros-secondary p-2 rounded-md hover:bg-acros-primary transition-colors"
+          className="md:hidden text-acros-secondary p-2 rounded-lg bg-acros-primary hover:bg-acros-primary/80 transition-colors shadow-sm border border-acros-secondary/10"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -93,7 +99,7 @@ export function Navigation() {
       {/* Mobile Navigation Menu */}
       <div 
         className={cn(
-          'md:hidden fixed inset-0 bg-white/95 backdrop-blur-sm z-40 transition-all duration-300 pt-16',
+          'md:hidden fixed inset-0 bg-white/95 backdrop-blur-md z-40 transition-all duration-300 pt-20',
           isMenuOpen 
             ? 'opacity-100 pointer-events-auto' 
             : 'opacity-0 pointer-events-none translate-x-full'
@@ -102,22 +108,22 @@ export function Navigation() {
         <div className="absolute top-4 right-4">
           <button
             onClick={() => setIsMenuOpen(false)}
-            className="p-2 rounded-md hover:bg-acros-primary/50 text-acros-secondary transition-colors"
+            className="p-2 rounded-lg bg-acros-primary text-acros-secondary hover:bg-acros-primary/80 transition-colors shadow-sm"
           >
             <X size={24} />
           </button>
         </div>
 
-        <nav className="flex flex-col items-center space-y-6 p-8">
+        <nav className="flex flex-col items-center space-y-4 p-8">
           {navItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
               className={cn(
-                "text-lg font-medium transition-colors",
+                "px-6 py-3 text-center w-full max-w-xs rounded-lg transition-all duration-300",
                 activeSection === item.href.replace('#', '')
-                  ? "text-acros-secondary"
-                  : "text-foreground/80 hover:text-acros-secondary"
+                  ? "bg-acros-secondary text-white shadow-md"
+                  : "text-acros-secondary bg-acros-primary/50 hover:bg-acros-primary"
               )}
               onClick={() => setIsMenuOpen(false)}
             >

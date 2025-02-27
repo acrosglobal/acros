@@ -74,23 +74,25 @@ export function About() {
   const [activeMilestone, setActiveMilestone] = useState<number | null>(null);
   
   return (
-    <section id="about" className="py-20 bg-gradient-to-b from-white to-acros-secondary/5">
+    <section id="about" className="py-20 bg-gradient-to-b from-white to-acros-primary/30">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
-          <h2 className="section-heading animate-fade-in">About Acros Global</h2>
-          <p className="section-subheading animate-fade-in">
+          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-acros-secondary animate-fade-in">About Acros Global</h2>
+          <p className="text-lg md:text-xl text-foreground/80 max-w-3xl mx-auto text-balance animate-fade-in">
             From a visionary startup to an industry leader, our journey is defined by innovation, growth, and unwavering commitment to excellence.
           </p>
         </div>
         
         <div className="max-w-3xl mx-auto mb-20 animate-fade-in">
-          <p className="text-lg text-center text-foreground/80 mb-8 text-balance">
-            Acros Global was founded with a clear mission: to develop cutting-edge technological solutions that address complex business challenges. Our team of dedicated experts works tirelessly to push boundaries and create products that not only meet but exceed market expectations.
-          </p>
-          
-          <p className="text-lg text-center text-foreground/80 text-balance">
-            We believe in the power of innovation to transform businesses and enhance user experiences. Our commitment to quality, functionality, and customer satisfaction has established us as a trusted partner for organizations seeking to leverage technology for strategic advantage.
-          </p>
+          <div className="bg-white rounded-xl shadow-md p-8 border border-acros-primary">
+            <p className="text-lg text-center text-foreground/80 mb-8 text-balance">
+              Acros Global was founded with a clear mission: to develop cutting-edge technological solutions that address complex business challenges. Our team of dedicated experts works tirelessly to push boundaries and create products that not only meet but exceed market expectations.
+            </p>
+            
+            <p className="text-lg text-center text-foreground/80 text-balance">
+              We believe in the power of innovation to transform businesses and enhance user experiences. Our commitment to quality, functionality, and customer satisfaction has established us as a trusted partner for organizations seeking to leverage technology for strategic advantage.
+            </p>
+          </div>
         </div>
         
         <div className="text-center mb-16">
@@ -101,19 +103,19 @@ export function About() {
         </div>
         
         <div className="relative">
-          {/* Timeline Line */}
-          <div className="timeline-line bg-gradient-to-b from-acros-secondary/40 via-acros-secondary via-acros-secondary/40"></div>
+          {/* Timeline Line - Hidden on mobile */}
+          <div className="hidden md:block timeline-line bg-gradient-to-b from-acros-secondary/40 via-acros-secondary via-acros-secondary/40"></div>
           
           {/* Timeline Events */}
-          <div className="space-y-16 relative">
+          <div className="space-y-8 md:space-y-16 relative">
             {milestones.map((milestone, index) => {
               const isLeft = index % 2 === 0;
               
               return (
                 <div key={milestone.id} className="relative">
-                  {/* Dot */}
+                  {/* Dot - Only visible on medium screens and up */}
                   <div 
-                    className="timeline-dot"
+                    className="hidden md:block timeline-dot"
                     style={{ top: '50%' }}
                     onMouseEnter={() => setActiveMilestone(milestone.id)}
                     onMouseLeave={() => setActiveMilestone(null)}
@@ -121,9 +123,9 @@ export function About() {
                     <div className="absolute inset-0 rounded-full animate-ping bg-acros-secondary/50" style={{animationDuration: '3s'}}></div>
                   </div>
                   
-                  {/* Content */}
+                  {/* Content - Full width on mobile, half width on desktop */}
                   <div 
-                    className={`timeline-content ${isLeft ? 'timeline-content-left' : 'timeline-content-right'} 
+                    className={`timeline-content relative mx-auto md:mx-0 ${isLeft ? 'md:timeline-content-left' : 'md:timeline-content-right'} 
                       ${activeMilestone === milestone.id ? 'bg-acros-secondary/10 border-acros-secondary/40' : 'bg-white border-acros-secondary/20'} 
                       border transition-all duration-500 backdrop-blur-sm`}
                   >
@@ -145,9 +147,9 @@ export function About() {
                       </div>
                     </div>
                     
-                    {/* Connected line to timeline */}
+                    {/* Connected line to timeline - Only visible on medium screens and up */}
                     <div 
-                      className={`absolute top-1/2 w-8 h-px bg-acros-secondary/50 
+                      className={`hidden md:block absolute top-1/2 w-8 h-px bg-acros-secondary/50 
                       ${isLeft ? 'left-full' : 'right-full'}`}
                       style={{ transform: 'translateY(-50%)' }}
                     ></div>

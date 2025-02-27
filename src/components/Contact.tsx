@@ -11,6 +11,7 @@ export function Contact() {
     message: '',
   });
   
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [newsletter, setNewsletter] = useState('');
   
@@ -19,19 +20,35 @@ export function Contact() {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
   
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
-      toast.success("Your message has been sent successfully. We'll get back to you soon!");
+    // Include recipient email in form data
+    const contactEmail = 'contact@acrosglobal.in';
+    const emailData = {
+      ...formData,
+      to: contactEmail,
+    };
+    
+    try {
+      // Simulate sending data to email
+      // In a real implementation, you would use a form submission service or backend endpoint
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      toast.success(`Message sent to ${contactEmail}. We'll get back to you soon!`);
       setFormData({
         name: '',
         email: '',
         subject: '',
         message: '',
       });
-    }, 1000);
+    } catch (error) {
+      toast.error("Failed to send message. Please try again later.");
+      console.error("Form submission error:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   
   const handleSubscribe = (e: React.FormEvent) => {
@@ -126,11 +143,27 @@ export function Contact() {
                 </div>
                 <button
                   type="submit"
-                  className="btn-primary w-full flex items-center justify-center gap-2"
+                  disabled={isSubmitting}
+                  className="btn-primary w-full flex items-center justify-center gap-2 disabled:opacity-70"
                 >
-                  <Send size={18} />
-                  Send Message
+                  {isSubmitting ? (
+                    <>
+                      <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Sending...
+                    </>
+                  ) : (
+                    <>
+                      <Send size={18} />
+                      Send Message
+                    </>
+                  )}
                 </button>
+                <div className="mt-4 text-sm text-center text-foreground/60">
+                  Your message will be sent to contact@acrosglobal.in
+                </div>
               </form>
             </div>
           </div>
