@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { CalendarDays, Activity, Users, Award } from 'lucide-react';
+import { CalendarDays, Activity, Users, Award, ChevronRight } from 'lucide-react';
 
 type Milestone = {
   id: number;
@@ -74,7 +74,7 @@ export function About() {
   const [activeMilestone, setActiveMilestone] = useState<number | null>(null);
   
   return (
-    <section id="about" className="py-20 bg-gradient-to-b from-white to-acros-primary/30">
+    <section id="about" className="py-20 bg-gradient-to-b from-white to-acros-primary/30 overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-4 text-acros-secondary animate-fade-in">About Acros Global</h2>
@@ -102,62 +102,119 @@ export function About() {
           </p>
         </div>
         
-        <div className="relative">
-          {/* Timeline Line - Hidden on mobile */}
-          <div className="hidden md:block timeline-line bg-gradient-to-b from-acros-secondary/40 via-acros-secondary via-acros-secondary/40"></div>
+        {/* Modern Timeline for desktop */}
+        <div className="hidden md:block relative">
+          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-acros-secondary/20 via-acros-secondary to-acros-secondary/20 rounded-full"></div>
           
-          {/* Timeline Events */}
-          <div className="space-y-8 md:space-y-16 relative">
+          <div className="space-y-24">
             {milestones.map((milestone, index) => {
               const isLeft = index % 2 === 0;
               
               return (
                 <div key={milestone.id} className="relative">
-                  {/* Dot - Only visible on medium screens and up */}
+                  {/* Timeline dot */}
                   <div 
-                    className="hidden md:block timeline-dot"
-                    style={{ top: '50%' }}
+                    className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-5 h-5 rounded-full bg-acros-secondary z-10 border-2 border-white"
                     onMouseEnter={() => setActiveMilestone(milestone.id)}
                     onMouseLeave={() => setActiveMilestone(null)}
                   >
-                    <div className="absolute inset-0 rounded-full animate-ping bg-acros-secondary/50" style={{animationDuration: '3s'}}></div>
+                    <div className={`absolute inset-0 rounded-full animate-ping ${activeMilestone === milestone.id ? 'bg-acros-secondary/40' : 'bg-acros-secondary/20'}`} style={{animationDuration: '3s'}}></div>
                   </div>
                   
-                  {/* Content - Full width on mobile, half width on desktop */}
-                  <div 
-                    className={`timeline-content relative mx-auto md:mx-0 ${isLeft ? 'md:timeline-content-left' : 'md:timeline-content-right'} 
-                      ${activeMilestone === milestone.id ? 'bg-acros-secondary/10 border-acros-secondary/40' : 'bg-white border-acros-secondary/20'} 
-                      border transition-all duration-500 backdrop-blur-sm`}
-                  >
-                    <div className="absolute top-0 right-0 bottom-0 left-0 bg-white opacity-90 -z-10 rounded-lg"></div>
-                    
-                    <div className="flex items-start gap-4">
-                      <div className={`flex-shrink-0 p-3 rounded-full bg-gradient-to-br ${milestone.color} text-white shadow-lg`}>
-                        <milestone.icon size={20} />
-                      </div>
-                      
-                      <div>
-                        <div className="font-display text-sm font-semibold text-acros-secondary mb-1 tracking-wider">
-                          {milestone.date}
+                  {/* Content */}
+                  <div className="grid grid-cols-2 gap-8 items-center">
+                    {isLeft ? (
+                      <>
+                        <div 
+                          className={`transition-all duration-300 transform ${activeMilestone === milestone.id ? 'scale-105' : ''}`}
+                        >
+                          <div 
+                            className={`bg-white p-6 rounded-lg shadow-md border border-acros-secondary/10 transition-all duration-300 ${activeMilestone === milestone.id ? 'shadow-lg border-acros-secondary/30' : ''}`}
+                          >
+                            <div className="flex items-start gap-4">
+                              <div className={`flex-shrink-0 p-3 rounded-full bg-gradient-to-br ${milestone.color} text-white shadow-md`}>
+                                <milestone.icon size={20} />
+                              </div>
+                              <div>
+                                <div className="font-display text-sm font-semibold text-acros-secondary mb-1 tracking-wider">
+                                  {milestone.date}
+                                </div>
+                                <h4 className="text-xl font-display font-bold mb-2 bg-gradient-to-r from-acros-secondary to-acros-secondary/70 text-transparent bg-clip-text">
+                                  {milestone.title}
+                                </h4>
+                                <p className="text-foreground/70">{milestone.description}</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="absolute right-0 top-1/2 w-8 h-px bg-acros-secondary/50 transform -translate-y-1/2"></div>
                         </div>
-                        <h4 className="text-xl font-display font-bold mb-2 bg-gradient-to-r from-acros-secondary to-acros-secondary/70 text-transparent bg-clip-text">
-                          {milestone.title}
-                        </h4>
-                        <p className="text-foreground/70">{milestone.description}</p>
-                      </div>
-                    </div>
-                    
-                    {/* Connected line to timeline - Only visible on medium screens and up */}
-                    <div 
-                      className={`hidden md:block absolute top-1/2 w-8 h-px bg-acros-secondary/50 
-                      ${isLeft ? 'left-full' : 'right-full'}`}
-                      style={{ transform: 'translateY(-50%)' }}
-                    ></div>
+                        <div></div>
+                      </>
+                    ) : (
+                      <>
+                        <div></div>
+                        <div 
+                          className={`transition-all duration-300 transform ${activeMilestone === milestone.id ? 'scale-105' : ''}`}
+                        >
+                          <div 
+                            className={`bg-white p-6 rounded-lg shadow-md border border-acros-secondary/10 transition-all duration-300 ${activeMilestone === milestone.id ? 'shadow-lg border-acros-secondary/30' : ''}`}
+                          >
+                            <div className="flex items-start gap-4">
+                              <div className={`flex-shrink-0 p-3 rounded-full bg-gradient-to-br ${milestone.color} text-white shadow-md`}>
+                                <milestone.icon size={20} />
+                              </div>
+                              <div>
+                                <div className="font-display text-sm font-semibold text-acros-secondary mb-1 tracking-wider">
+                                  {milestone.date}
+                                </div>
+                                <h4 className="text-xl font-display font-bold mb-2 bg-gradient-to-r from-acros-secondary to-acros-secondary/70 text-transparent bg-clip-text">
+                                  {milestone.title}
+                                </h4>
+                                <p className="text-foreground/70">{milestone.description}</p>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="absolute left-0 top-1/2 w-8 h-px bg-acros-secondary/50 transform -translate-y-1/2"></div>
+                        </div>
+                      </>
+                    )}
                   </div>
                 </div>
               );
             })}
           </div>
+        </div>
+        
+        {/* Mobile Timeline - Vertical cards with small connecting lines */}
+        <div className="md:hidden space-y-6 relative">
+          <div className="absolute left-4 top-4 bottom-4 w-0.5 bg-acros-secondary/30"></div>
+          
+          {milestones.map((milestone) => (
+            <div key={milestone.id} className="relative pl-12">
+              <div 
+                className="absolute left-4 top-4 w-4 h-4 rounded-full bg-acros-secondary border-2 border-white"
+                style={{ transform: 'translateX(-50%)' }}
+              ></div>
+              <div className="absolute left-4 top-4 w-8 h-0.5 bg-acros-secondary/50"></div>
+              
+              <div className="bg-white p-5 rounded-lg shadow-md border border-acros-secondary/10 hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+                <div className="flex items-start gap-3">
+                  <div className={`flex-shrink-0 p-2.5 rounded-full bg-gradient-to-br ${milestone.color} text-white shadow-md`}>
+                    <milestone.icon size={18} />
+                  </div>
+                  <div>
+                    <div className="font-display text-xs font-semibold text-acros-secondary mb-1 tracking-wider">
+                      {milestone.date}
+                    </div>
+                    <h4 className="text-lg font-display font-bold mb-1 text-acros-secondary">
+                      {milestone.title}
+                    </h4>
+                    <p className="text-sm text-foreground/70">{milestone.description}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

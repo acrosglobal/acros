@@ -68,7 +68,7 @@ export function Contact() {
   };
   
   return (
-    <section id="contact" className="py-20 bg-acros-secondary/5">
+    <section id="contact" className="py-20 bg-acros-secondary/5 w-full overflow-hidden">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
           <h2 className="section-heading animate-fade-in">Get In Touch</h2>
@@ -225,18 +225,18 @@ export function Contact() {
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubscribe} className="flex items-stretch">
+                <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row items-stretch">
                   <input
                     type="email"
                     placeholder="Your email address"
                     value={newsletter}
                     onChange={(e) => setNewsletter(e.target.value)}
-                    className="flex-1 px-4 py-3 rounded-l-lg border border-border focus:outline-none focus:ring-2 focus:ring-acros-secondary/50 transition-all duration-300"
+                    className="flex-1 px-4 py-3 rounded-lg sm:rounded-r-none border border-border focus:outline-none focus:ring-2 focus:ring-acros-secondary/50 transition-all duration-300"
                     required
                   />
                   <button
                     type="submit"
-                    className="px-6 py-3 bg-acros-secondary text-white rounded-r-lg hover:bg-acros-secondary/90 transition-colors font-medium"
+                    className="px-6 py-3 bg-acros-secondary text-white rounded-lg sm:rounded-l-none mt-2 sm:mt-0 border border-acros-secondary hover:bg-acros-secondary/90 transition-colors font-medium"
                   >
                     Subscribe
                   </button>
