@@ -48,53 +48,41 @@ export function Navigation() {
   return (
     <header 
       className={cn(
-        'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
+        'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
         isScrolled 
-          ? 'bg-white/80 backdrop-blur-md shadow-lg py-3' 
-          : 'bg-transparent py-5'
+          ? 'bg-white/90 backdrop-blur-sm shadow-sm py-3' 
+          : 'bg-transparent py-4'
       )}
     >
       <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
-        <a href="#home" className="flex items-center gap-2 group">
-          <div className={cn(
-            "relative flex items-center transition-all duration-300",
-            isScrolled ? "scale-90" : "scale-100"
-          )}>
-            <img 
-              src="/lovable-uploads/7ad5d502-1a33-406c-8a5f-7459bc65b916.png" 
-              alt="Acros Global Logo" 
-              className="h-12 w-auto transition-all duration-300 group-hover:scale-110" 
-            />
-            <span className="font-display font-bold text-2xl md:text-3xl bg-gradient-to-r from-acros-secondary to-acros-secondary/70 text-transparent bg-clip-text ml-2">
-              ACROS
-            </span>
-          </div>
+        <a href="#home" className="flex items-center gap-2">
+          <img 
+            src="/lovable-uploads/7ad5d502-1a33-406c-8a5f-7459bc65b916.png" 
+            alt="Acros Global Logo" 
+            className="h-10 w-auto transition-transform duration-300 hover:scale-105" 
+          />
+          <span className="font-semibold text-xl text-acros-secondary">ACROS</span>
         </a>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center">
-          <div className="flex items-center p-1 rounded-full bg-white/80 backdrop-blur-sm shadow-sm border border-acros-secondary/10">
-            {navItems.map((item, index) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  'nav-link mx-1',
-                  activeSection === item.href.replace('#', '') ? 'active' : '',
-                  index === 0 && 'rounded-l-full pl-5',
-                  index === navItems.length - 1 && 'rounded-r-full pr-5'
-                )}
-              >
-                {item.label}
-              </a>
-            ))}
-          </div>
+        <nav className="hidden md:flex items-center space-x-2">
+          {navItems.map((item) => (
+            <a
+              key={item.href}
+              href={item.href}
+              className={cn(
+                'nav-link',
+                activeSection === item.href.replace('#', '') ? 'active' : ''
+              )}
+            >
+              {item.label}
+            </a>
+          ))}
         </nav>
 
         {/* Mobile Navigation Toggle */}
         <button 
-          className="md:hidden text-acros-secondary p-2 rounded-full bg-white/80 backdrop-blur-sm shadow-md 
-                     hover:bg-acros-secondary/10 transition-colors duration-300 border border-acros-secondary/30"
+          className="md:hidden text-acros-secondary p-2 rounded-md hover:bg-acros-primary transition-colors"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
         >
@@ -105,32 +93,31 @@ export function Navigation() {
       {/* Mobile Navigation Menu */}
       <div 
         className={cn(
-          'md:hidden fixed inset-0 bg-white/95 backdrop-blur-md z-40 transition-all duration-500 ease-in-out pt-20',
+          'md:hidden fixed inset-0 bg-white/95 backdrop-blur-sm z-40 transition-all duration-300 pt-16',
           isMenuOpen 
             ? 'opacity-100 pointer-events-auto' 
             : 'opacity-0 pointer-events-none translate-x-full'
         )}
       >
-        <div className="absolute top-6 right-6">
+        <div className="absolute top-4 right-4">
           <button
             onClick={() => setIsMenuOpen(false)}
-            className="p-2 rounded-full bg-acros-secondary/10 text-acros-secondary
-                     hover:bg-acros-secondary/20 transition-colors duration-300"
+            className="p-2 rounded-md hover:bg-acros-primary/50 text-acros-secondary transition-colors"
           >
             <X size={24} />
           </button>
         </div>
 
-        <nav className="flex flex-col items-center space-y-8 p-8">
+        <nav className="flex flex-col items-center space-y-6 p-8">
           {navItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
               className={cn(
-                "text-lg font-display font-medium transition-all duration-300 tracking-wider",
+                "text-lg font-medium transition-colors",
                 activeSection === item.href.replace('#', '')
-                  ? "text-acros-secondary scale-110 font-semibold"
-                  : "text-foreground/80 hover:text-acros-secondary hover:scale-105"
+                  ? "text-acros-secondary"
+                  : "text-foreground/80 hover:text-acros-secondary"
               )}
               onClick={() => setIsMenuOpen(false)}
             >

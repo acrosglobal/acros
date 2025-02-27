@@ -13,35 +13,35 @@ export function Footer() {
               <img 
                 src="/lovable-uploads/7ad5d502-1a33-406c-8a5f-7459bc65b916.png" 
                 alt="Acros Global Logo" 
-                className="h-12 w-auto filter brightness-0 invert" 
+                className="h-10 w-auto filter brightness-0 invert" 
               />
-              <span className="font-display font-bold text-2xl tracking-wider">ACROS</span>
+              <span className="font-bold text-xl">ACROS</span>
             </div>
             <p className="text-white/80 mb-6 max-w-xs">
               Empowering businesses with innovative financial calculation tools and technology solutions to navigate the digital landscape.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-white/70 hover:text-white transition-colors hover:scale-110 transform duration-300 flex items-center justify-center bg-white/10 p-2 rounded-full">
-                <Facebook size={20} />
+              <a href="#" className="text-white/70 hover:text-white transition-colors hover:bg-white/20 p-2 rounded-full">
+                <Facebook size={18} />
               </a>
-              <a href="#" className="text-white/70 hover:text-white transition-colors hover:scale-110 transform duration-300 flex items-center justify-center bg-white/10 p-2 rounded-full">
-                <Twitter size={20} />
+              <a href="#" className="text-white/70 hover:text-white transition-colors hover:bg-white/20 p-2 rounded-full">
+                <Twitter size={18} />
               </a>
-              <a href="#" className="text-white/70 hover:text-white transition-colors hover:scale-110 transform duration-300 flex items-center justify-center bg-white/10 p-2 rounded-full">
-                <Instagram size={20} />
+              <a href="#" className="text-white/70 hover:text-white transition-colors hover:bg-white/20 p-2 rounded-full">
+                <Instagram size={18} />
               </a>
-              <a href="#" className="text-white/70 hover:text-white transition-colors hover:scale-110 transform duration-300 flex items-center justify-center bg-white/10 p-2 rounded-full">
-                <Linkedin size={20} />
+              <a href="#" className="text-white/70 hover:text-white transition-colors hover:bg-white/20 p-2 rounded-full">
+                <Linkedin size={18} />
               </a>
-              <a href="#" className="text-white/70 hover:text-white transition-colors hover:scale-110 transform duration-300 flex items-center justify-center bg-white/10 p-2 rounded-full">
-                <Github size={20} />
+              <a href="#" className="text-white/70 hover:text-white transition-colors hover:bg-white/20 p-2 rounded-full">
+                <Github size={18} />
               </a>
             </div>
           </div>
           
           <div>
-            <h4 className="text-lg font-display font-bold mb-6 tracking-wider">Quick Links</h4>
-            <ul className="space-y-3">
+            <h4 className="text-lg font-bold mb-4">Quick Links</h4>
+            <ul className="space-y-2">
               <li>
                 <a href="#home" className="text-white/70 hover:text-white transition-colors hover:translate-x-1 transform inline-block duration-300">Home</a>
               </li>
@@ -61,8 +61,8 @@ export function Footer() {
           </div>
           
           <div>
-            <h4 className="text-lg font-display font-bold mb-6 tracking-wider">Products</h4>
-            <ul className="space-y-3">
+            <h4 className="text-lg font-bold mb-4">Products</h4>
+            <ul className="space-y-2">
               <li>
                 <a href="#products" className="text-white/70 hover:text-white transition-colors hover:translate-x-1 transform inline-block duration-300">Tax Calculator</a>
               </li>
@@ -79,8 +79,8 @@ export function Footer() {
           </div>
           
           <div>
-            <h4 className="text-lg font-display font-bold mb-6 tracking-wider">Contact Us</h4>
-            <ul className="space-y-4">
+            <h4 className="text-lg font-bold mb-4">Contact Us</h4>
+            <ul className="space-y-3">
               <li className="flex items-start gap-3">
                 <Mail size={18} className="text-white/70 mt-1" />
                 <span className="text-white/70">contact@acrosglobal.in</span>
@@ -100,8 +100,8 @@ export function Footer() {
           </div>
         </div>
         
-        <div className="mt-12 pt-8 border-t border-white/20 text-center">
-          <p className="text-white/70 font-display tracking-wider">
+        <div className="mt-10 pt-8 border-t border-white/20 text-center">
+          <p className="text-white/70">
             &copy; {currentYear} Acros Global. All rights reserved.
           </p>
         </div>
