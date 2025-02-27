@@ -51,19 +51,19 @@ export function Contact() {
   };
   
   return (
-    <section id="contact" className="py-20 bg-acros-primary/10">
+    <section id="contact" className="py-20 bg-acros-secondary/5">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
           <h2 className="section-heading animate-fade-in">Get In Touch</h2>
           <p className="section-subheading animate-fade-in">
-            Have questions or want to learn more about our products and services? We'd love to hear from you.
+            Have questions or want to learn more about our calculators and services? We'd love to hear from you.
           </p>
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div className="animate-slide-right">
-            <div className="bg-white rounded-xl shadow-md p-8">
-              <h3 className="text-xl font-bold mb-6 text-acros-secondary">Send Us a Message</h3>
+            <div className="bg-white rounded-xl shadow-md p-8 hover:shadow-lg transition-all duration-300 border border-acros-secondary/10">
+              <h3 className="text-xl font-display font-bold mb-6 text-acros-secondary tracking-wide">Send Us a Message</h3>
               
               <form onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
@@ -78,7 +78,7 @@ export function Contact() {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-2 rounded-lg border border-border focus:outline-none focus:ring-1 focus:ring-acros-secondary"
+                      className="w-full px-4 py-2 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-acros-secondary/50 transition-all duration-300"
                     />
                   </div>
                   <div>
@@ -92,7 +92,7 @@ export function Contact() {
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-2 rounded-lg border border-border focus:outline-none focus:ring-1 focus:ring-acros-secondary"
+                      className="w-full px-4 py-2 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-acros-secondary/50 transition-all duration-300"
                     />
                   </div>
                 </div>
@@ -107,7 +107,7 @@ export function Contact() {
                     value={formData.subject}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-2 rounded-lg border border-border focus:outline-none focus:ring-1 focus:ring-acros-secondary"
+                    className="w-full px-4 py-2 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-acros-secondary/50 transition-all duration-300"
                   />
                 </div>
                 <div className="mb-6">
@@ -121,12 +121,12 @@ export function Contact() {
                     onChange={handleChange}
                     required
                     rows={4}
-                    className="w-full px-4 py-2 rounded-lg border border-border focus:outline-none focus:ring-1 focus:ring-acros-secondary resize-none"
+                    className="w-full px-4 py-2 rounded-lg border border-border focus:outline-none focus:ring-2 focus:ring-acros-secondary/50 transition-all duration-300 resize-none"
                   ></textarea>
                 </div>
                 <button
                   type="submit"
-                  className="w-full py-3 bg-acros-secondary text-white rounded-lg font-medium hover:bg-acros-secondary/90 transition-colors flex items-center justify-center gap-2"
+                  className="btn-primary w-full flex items-center justify-center gap-2"
                 >
                   <Send size={18} />
                   Send Message
@@ -136,57 +136,58 @@ export function Contact() {
           </div>
           
           <div className="animate-slide-left">
-            <div className="bg-white rounded-xl shadow-md p-8 mb-8">
-              <h3 className="text-xl font-bold mb-6 text-acros-secondary">Contact Information</h3>
+            <div className="bg-white rounded-xl shadow-md p-8 mb-8 hover:shadow-lg transition-all duration-300 border border-acros-secondary/10">
+              <h3 className="text-xl font-display font-bold mb-6 text-acros-secondary tracking-wide">Contact Information</h3>
               
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="bg-acros-primary/30 p-3 rounded-full">
-                    <Mail size={20} className="text-acros-secondary" />
+                  <div className="bg-acros-secondary/10 p-3 rounded-full shadow-md">
+                    <Mail className="text-acros-secondary" size={24} />
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold mb-1">Email</h4>
-                    <a href="mailto:info@acrosglobal.com" className="text-foreground/70 hover:text-acros-secondary transition-colors">
-                      info@acrosglobal.com
+                    <h4 className="text-sm font-semibold mb-1 text-acros-dark">Email</h4>
+                    <a href="mailto:contact@acrosglobal.in" className="text-acros-secondary hover:text-acros-secondary/80 transition-colors font-medium">
+                      contact@acrosglobal.in
                     </a>
                   </div>
                 </div>
                 
                 <div className="flex items-start gap-4">
-                  <div className="bg-acros-primary/30 p-3 rounded-full">
-                    <Phone size={20} className="text-acros-secondary" />
+                  <div className="bg-acros-secondary/10 p-3 rounded-full shadow-md">
+                    <Phone className="text-acros-secondary" size={24} />
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold mb-1">Phone</h4>
-                    <a href="tel:+11234567890" className="text-foreground/70 hover:text-acros-secondary transition-colors">
-                      +1 (123) 456-7890
+                    <h4 className="text-sm font-semibold mb-1 text-acros-dark">Phone</h4>
+                    <a href="tel:+917448252629" className="text-acros-secondary hover:text-acros-secondary/80 transition-colors font-medium">
+                      +91 7448252629
                     </a>
                   </div>
                 </div>
                 
                 <div className="flex items-start gap-4">
-                  <div className="bg-acros-primary/30 p-3 rounded-full">
-                    <MapPin size={20} className="text-acros-secondary" />
+                  <div className="bg-acros-secondary/10 p-3 rounded-full shadow-md">
+                    <MapPin className="text-acros-secondary" size={24} />
                   </div>
                   <div>
-                    <h4 className="text-sm font-semibold mb-1">Address</h4>
-                    <p className="text-foreground/70">
-                      123 Innovation Drive, Tech City, CA 94123, United States
+                    <h4 className="text-sm font-semibold mb-1 text-acros-dark">Address</h4>
+                    <p className="text-foreground/80">
+                      RG Infotech Park, Hinjewadi Phase - I, <br />
+                      Pune, MH - 411057
                     </p>
                   </div>
                 </div>
               </div>
             </div>
             
-            <div className="bg-white rounded-xl shadow-md p-8">
-              <h3 className="text-xl font-bold mb-4 text-acros-secondary">Subscribe to Our Newsletter</h3>
-              <p className="text-foreground/70 mb-6">
-                Stay updated with the latest news, product releases, and industry insights.
+            <div className="bg-white rounded-xl shadow-md p-8 hover:shadow-lg transition-all duration-300 border border-acros-secondary/10">
+              <h3 className="text-xl font-display font-bold mb-4 text-acros-secondary tracking-wide">Subscribe to Our Newsletter</h3>
+              <p className="text-foreground/80 mb-6">
+                Stay updated with the latest news, calculator releases, and industry insights.
               </p>
               
               {isSubscribed ? (
-                <div className="bg-acros-primary/20 p-4 rounded-lg">
-                  <p className="text-acros-secondary font-medium">
+                <div className="bg-acros-secondary/10 p-6 rounded-lg border border-acros-secondary/30">
+                  <p className="text-acros-secondary font-medium text-center">
                     Thank you for subscribing to our newsletter!
                   </p>
                 </div>
@@ -197,12 +198,12 @@ export function Contact() {
                     placeholder="Your email address"
                     value={newsletter}
                     onChange={(e) => setNewsletter(e.target.value)}
-                    className="flex-1 px-4 py-2 rounded-l-lg border border-border focus:outline-none focus:ring-1 focus:ring-acros-secondary"
+                    className="flex-1 px-4 py-3 rounded-l-lg border border-border focus:outline-none focus:ring-2 focus:ring-acros-secondary/50 transition-all duration-300"
                     required
                   />
                   <button
                     type="submit"
-                    className="px-4 py-2 bg-acros-secondary text-white rounded-r-lg hover:bg-acros-secondary/90 transition-colors"
+                    className="px-6 py-3 bg-acros-secondary text-white rounded-r-lg hover:bg-acros-secondary/90 transition-colors font-medium"
                   >
                     Subscribe
                   </button>
