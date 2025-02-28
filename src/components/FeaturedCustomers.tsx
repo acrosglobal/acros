@@ -20,7 +20,7 @@ const customers: Customer[] = [
   {
     id: 2,
     name: "Yes Bank",
-    logo: "/lovable-uploads/e9aac731-06e0-4aa1-9362-96586244b50e.png",
+    logo: "/lovable-uploads/9043e0b3-950d-4df6-a50e-cdf1d2f10aa5.png",
     description: "Enhancing customer experience through our custom-built financial calculators."
   },
   {
