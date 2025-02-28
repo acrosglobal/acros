@@ -38,7 +38,7 @@ const customers: Customer[] = [
   {
     id: 5,
     name: "Tech Innovate Networks",
-    logo: "/lovable-uploads/adee49d4-1abf-49c9-bf8f-68d76df1b17e.png",
+    logo: "/lovable-uploads/68560c96-be9a-44b8-8adb-ffada99fe330.png",
     description: "Accelerating business growth through our financial technology solutions."
   }
 ];
