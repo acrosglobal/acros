@@ -13,8 +13,8 @@ interface Customer {
 const customers: Customer[] = [
   {
     id: 1,
-    name: "Dhruv Space",
-    logo: "/lovable-uploads/15c05b0c-d7da-4fc0-905f-e29ea4063c10.png",
+    name: "Dhruva Space",
+    logo: "/lovable-uploads/2f43ee85-2492-4071-8817-935a9a9120c6.png",
     description: "Transforming satellite technology with our advanced financial planning tools."
   },
   {
