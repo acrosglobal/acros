@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -14,42 +14,64 @@ const customers: Customer[] = [
   {
     id: 1,
     name: "Dhruv Space",
-    logo: "https://via.placeholder.com/200x80/EDF4F2/31473A?text=Dhruv+Space",
+    logo: "/lovable-uploads/e9aac731-06e0-4aa1-9362-96586244b50e.png",
     description: "Transforming satellite technology with our advanced financial planning tools."
   },
   {
     id: 2,
     name: "Yes Bank",
-    logo: "https://via.placeholder.com/200x80/EDF4F2/31473A?text=Yes+Bank",
+    logo: "/lovable-uploads/adee49d4-1abf-49c9-bf8f-68d76df1b17e.png",
     description: "Enhancing customer experience through our custom-built financial calculators."
   },
   {
     id: 3,
     name: "Razorpay",
-    logo: "https://via.placeholder.com/200x80/EDF4F2/31473A?text=Razorpay",
+    logo: "/lovable-uploads/c2f767c7-deab-4c60-8dff-0416f56e43de.png",
     description: "Leveraging our innovative solutions to streamline payment calculations."
   },
   {
     id: 4,
     name: "Snapdeal",
-    logo: "https://via.placeholder.com/200x80/EDF4F2/31473A?text=Snapdeal",
+    logo: "/lovable-uploads/efb0573a-90c6-4247-a047-f34b0af0d593.png", 
     description: "Driving e-commerce sales with our integrated EMI and GST calculators."
   },
   {
     id: 5,
-    name: "Tech Innovate",
-    logo: "https://via.placeholder.com/200x80/EDF4F2/31473A?text=Tech+Innovate",
+    name: "Tech Innovate Networks",
+    logo: "/lovable-uploads/15c05b0c-d7da-4fc0-905f-e29ea4063c10.png",
     description: "Accelerating business growth through our financial technology solutions."
   }
 ];
 
 export function FeaturedCustomers() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [itemsPerView, setItemsPerView] = useState(3);
+  
+  // Responsive handling for items per view
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 640) {
+        setItemsPerView(1);
+      } else if (window.innerWidth < 1024) {
+        setItemsPerView(2);
+      } else {
+        setItemsPerView(3);
+      }
+    };
+    
+    // Set initial value
+    handleResize();
+    
+    // Add event listener
+    window.addEventListener('resize', handleResize);
+    
+    // Cleanup
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
   
   const visibleCustomers = () => {
-    const itemsPerView = typeof window !== 'undefined' && window.innerWidth < 768 ? 1 : 
-                        typeof window !== 'undefined' && window.innerWidth < 1024 ? 2 : 3;
-    
     let items = [];
     for (let i = 0; i < itemsPerView; i++) {
       items.push(customers[(activeIndex + i) % customers.length]);
@@ -66,7 +88,7 @@ export function FeaturedCustomers() {
   };
   
   return (
-    <section className="py-20 bg-white overflow-hidden">
+    <section className="py-20 bg-white">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-16">
           <div className="inline-block mb-3">
@@ -87,7 +109,7 @@ export function FeaturedCustomers() {
         <div className="relative px-6 md:px-10 max-w-5xl mx-auto">
           {/* Navigation Buttons */}
           <button 
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-acros-secondary text-white p-2 rounded-full shadow-md hover:bg-acros-accent transition-colors"
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-acros-secondary text-white p-2 rounded-full shadow-md hover:bg-acros-accent transition-colors duration-300"
             onClick={handlePrev}
             aria-label="Previous customer"
           >
@@ -95,7 +117,7 @@ export function FeaturedCustomers() {
           </button>
           
           <button 
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-acros-secondary text-white p-2 rounded-full shadow-md hover:bg-acros-accent transition-colors"
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-acros-secondary text-white p-2 rounded-full shadow-md hover:bg-acros-accent transition-colors duration-300"
             onClick={handleNext}
             aria-label="Next customer"
           >
@@ -104,7 +126,7 @@ export function FeaturedCustomers() {
           
           {/* Carousel Content */}
           <div className="flex justify-center">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 py-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 py-8">
               {visibleCustomers().map((customer, index) => (
                 <div 
                   key={customer.id}
